@@ -250,6 +250,12 @@ public class MenuBanque {
 
     public void menuChoixCompte()
     {
+        if (this.listCompte.isEmpty())
+        {
+            System.out.println("Il n'y a pas de compte a consulter");
+            return;
+        }
+        this.menuLister();
         System.out.println("Merci de rentrer le code du compte a consulter :");
         try
         {
