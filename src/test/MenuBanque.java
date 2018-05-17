@@ -83,7 +83,7 @@ public class MenuBanque {
         {
             System.out.println("4- Calculer l'interet");
         }
-        System.out.println("5- Quitter");
+        System.out.println("5- Retour");
         try
         {
             int option = sc.nextInt();
@@ -204,7 +204,7 @@ public class MenuBanque {
         System.out.println("1- Compte simple");
         System.out.println("2- Compte épargne");
         System.out.println("3- Compte payant");
-        System.out.println("4- Quitter");
+        System.out.println("4- Retour");
         try {
             int option = sc.nextInt();
             sc.nextLine();
@@ -240,8 +240,11 @@ public class MenuBanque {
     }
 
     public void menuLister(){
+        System.out.format("il y a %d comptes :\n", Compte.getNbComptes());
+        System.out.println("-------------");
         for(Compte compte : this.listCompte){
             System.out.println(compte);
+            System.out.println("-------------");
         }
     }
 

@@ -9,6 +9,10 @@ public abstract class Compte {
     private int code;
     protected float solde;
 
+    public static int getNbComptes(){
+        return nbComptes;
+    }
+
     Compte(float solde){
         Compte.nbComptes++;
         this.code = Compte.nbComptes;
