@@ -239,6 +239,12 @@ public class MenuBanque {
 
     }
 
+    public void menuLister(){
+        for(Compte compte : this.listCompte){
+            System.out.println(compte);
+        }
+    }
+
     public void menuBienvenue()
     {
         System.out.println("Bienvenue dans la banque " + this.nomBanque + " !");
@@ -254,7 +260,7 @@ public class MenuBanque {
                 sc.nextLine();
                 if (option == 1)
                 {
-
+                    this.menuLister();
                 }
                 else if (option == 2)
                 {
