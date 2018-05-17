@@ -27,7 +27,7 @@ public class CompteSimple extends Compte {
         if(montant < 0){
             throw new InferieurAZeroException();
         }
-        else if(montant > solde+decouvert){
+        else if(montant > solde + decouvert){
             throw new SoldeInsuffisantException();
         }
         this.solde -= montant;

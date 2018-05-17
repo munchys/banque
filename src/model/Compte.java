@@ -15,13 +15,13 @@ public abstract class Compte {
 //        Compte.listeCompte.add(this);
         this.solde = solde;
     }
-    protected void verser(float montant) throws InferieurAZeroException{
+    public void verser(float montant) throws InferieurAZeroException{
         if(montant < 0){
             throw new InferieurAZeroException();
         }
         this.solde += montant;
     }
-    protected void retirer(float montant) throws InferieurAZeroException, SoldeInsuffisantException{
+    public void retirer(float montant) throws InferieurAZeroException, SoldeInsuffisantException{
         if(montant < 0){
             throw new InferieurAZeroException();
         }

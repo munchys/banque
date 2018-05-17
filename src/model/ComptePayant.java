@@ -11,14 +11,19 @@ public class ComptePayant extends Compte {
     }
 
     public void retirer(float montant) throws InferieurAZeroException, SoldeInsuffisantException {
-        if(montant <0 ){
+        if(montant < 0 ){
             throw new InferieurAZeroException();
         }
         montant += montant * tauxPaiement;
+        if(montant > this.solde){
+            throw new SoldeInsuffisantException();
+        }
         this.solde -= montant;
     }
     public void verser(float montant) throws InferieurAZeroException{
-
+        if(montant < 0){
+            throw new InferieurAZeroException();
+        }
         this.solde -= montant + montant * tauxPaiement;
     }
 
