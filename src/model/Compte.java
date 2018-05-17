@@ -1,11 +1,12 @@
 package model;
 
-import java.util.List;
+import exception.SoldeInsuffisantException;
+import exception.InferieurAZeroException;
 
 public abstract class Compte {
 //    private static List<Compte> listeCompte;
     private static int nbComptes = 0;
-    private int code;
+    protected int code;
     protected float solde;
 
     Compte(float solde){
@@ -15,24 +16,18 @@ public abstract class Compte {
         this.solde = solde;
 
     }
-    protected boolean verifieMontantSuperieurA0(float montant){
-        return montant > 0;
-    }
-    protected void verser(float montant){
+    protected void verser(float montant) throws InferieurAZeroException{
         if(montant < 0){
-            System.out.println("pas de montant négatif");
-            return;
+            throw new InferieurAZeroException();
         }
         this.solde += montant;
     }
-    protected void retirer(float montant){
+    protected void retirer(float montant) throws InferieurAZeroException, SoldeInsuffisantException{
         if(montant < 0){
-            System.out.println("pas de montant négatif");
-            return;
+            throw new InferieurAZeroException();
         }
-        else if(solde - montant <0){
-            System.out.println("pas assez d'argent");
-            return;
+        else if(montant > solde){
+            throw new SoldeInsuffisantException();
         }
         this.solde -= montant;
     }
@@ -42,9 +37,10 @@ public abstract class Compte {
     }
 
 
+
     @Override
     public String toString(){
-        return String.format("Compte[solde:%f]", this.solde);
+        return String.format("Compte[id:%d,solde:%.2f]", this.code, this.solde);
     }
 
 }

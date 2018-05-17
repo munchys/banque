@@ -1,11 +1,13 @@
 package model;
 
+import exception.InferieurAZeroException;
 import model.Compte;
+import exception.SoldeInsuffisantException;
 
 public class CompteSimple extends Compte {
     private float decouvert;
 
-    CompteSimple(float solde, float decouvert){
+    public CompteSimple(float solde, float decouvert){
         super(solde);
         this.decouvert = decouvert;
     }
@@ -14,20 +16,26 @@ public class CompteSimple extends Compte {
         return decouvert;
     }
 
-    public void setDecouvert(float decouvert) {
+    public void setDecouvert(float decouvert) throws InferieurAZeroException {
         if(decouvert <0){
-            System.out.println("pas de découvert négatif");
-            return;
+            throw new InferieurAZeroException();
         }
         this.decouvert = decouvert;
     }
 
-    public void retirer(float montant){
-        if(montant <0){
-            System.out.println("pas de montant négatif");
+    public void retirer(float montant) throws InferieurAZeroException, SoldeInsuffisantException {
+        if(montant < 0){
+            throw new InferieurAZeroException();
         }
         else if(montant > solde+decouvert){
-            System.out.println("vous n'avez pas assez d'argent");
+            throw new SoldeInsuffisantException();
         }
+        this.solde -= montant;
     }
+
+    @Override
+    public String toString(){
+        return String.format("CompteSimple[code:%d, solde:%f, decouvert:%f]", this.code, this.solde, this.decouvert);
+    }
+
 }
