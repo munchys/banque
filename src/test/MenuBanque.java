@@ -236,8 +236,10 @@ public class MenuBanque {
     }
 
     public void menuLister(){
+        System.out.format("il y a %d comptes :\n", Compte.getNbComptes());
         for(Compte compte : this.listCompte){
             System.out.println(compte);
+            System.out.println("-------------");
         }
     }
 
