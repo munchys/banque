@@ -245,6 +245,30 @@ public class MenuBanque {
         }
     }
 
+    public void menuChoixCompte()
+    {
+        System.out.println("Merci de rentrer le code du compte a consulter :");
+        try
+        {
+            int code = sc.nextInt();
+            sc.nextLine();
+            for(Compte compte : this.listCompte){
+                if (code == compte.getCode())
+                {
+                    this.menuGererCompte(compte);
+                    return ;
+                }
+            }
+            System.out.println("Aucun compte correspondant a ce code !");
+        }
+        catch (Exception e)
+        {
+            sc.next();
+            System.out.println("Veuillez indiquez un entier");
+            menuChoixCompte();
+        }
+    }
+
     public void menuBienvenue()
     {
         System.out.println("Bienvenue dans la banque " + this.nomBanque + " !");
@@ -268,7 +292,7 @@ public class MenuBanque {
                 }
                 else if (option == 3)
                 {
-
+                    this.menuChoixCompte();
                 }
                 else if (option == 4)
                 {
