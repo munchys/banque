@@ -33,20 +33,20 @@ public class MenuBanque {
         catch (InferieurAZeroException e)
         {
             System.out.println(e.getMessage());
-            menuVerserArgent(compte);
+            menuRetirerArgent(compte);
             return ;
         }
         catch (SoldeInsuffisantException e)
         {
             System.out.println(e.getMessage());
-            menuVerserArgent(compte);
+            menuRetirerArgent(compte);
             return ;
         }
         catch (Exception e)
         {
             sc.next();
             System.out.println("Indiquez un float positif svp !");
-            menuVerserArgent(compte);
+            menuRetirerArgent(compte);
         }
     }
 
@@ -79,7 +79,10 @@ public class MenuBanque {
         System.out.println("1- Affichez les informations");
         System.out.println("2- Verser de l'argent");
         System.out.println("3- Retirer de l'argent");
-        System.out.println("4- Calculer l'interet");
+        if (compte instanceof CompteEpargne)
+        {
+            System.out.println("4- Calculer l'interet");
+        }
         System.out.println("5- Quitter");
         try
         {
@@ -97,9 +100,10 @@ public class MenuBanque {
             {
                 this.menuRetirerArgent(compte);
             }
-            else if (option == 4)
+            else if (option == 4 && compte instanceof CompteEpargne)
             {
-
+                CompteEpargne compteEpargne = (CompteEpargne)compte;
+                compteEpargne.calculInteret();
             }
             else if (option == 5)
             {
@@ -164,7 +168,7 @@ public class MenuBanque {
     }
     public void menuCreerCompteEpargne()
     {
-        System.out.println("Pour créer un compte simple merci d'indiquer un float correspondant au taux d'intéret");
+        System.out.println("Pour créer un compte épargne merci d'indiquer un float correspondant au taux d'intéret");
         try
         {
             float taux = sc.nextFloat();
@@ -179,7 +183,7 @@ public class MenuBanque {
         {
             sc.next();
             System.out.println("Veuillez indiquer un float");
-            menuCreerCompteSimple();
+            menuCreerCompteEpargne();
         }
     }
 
