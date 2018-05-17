@@ -24,7 +24,8 @@ public class ComptePayant extends Compte {
         if(montant < 0){
             throw new InferieurAZeroException();
         }
-        this.solde -= montant + montant * tauxPaiement;
+        montant -= montant * tauxPaiement;
+        this.solde += montant ;
     }
 
     @Override
