@@ -35,7 +35,7 @@ public class CompteSimple extends Compte {
 
     @Override
     public String toString(){
-        return String.format("CompteSimple[code:%d, solde:%f, decouvert:%f]", this.code, this.solde, this.decouvert);
+        return String.format("CompteSimple[code:%d, solde:%.2f, decouvert:%.2f]", this.getCode(), this.solde, this.decouvert);
     }
 
 }

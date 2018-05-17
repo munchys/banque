@@ -12,7 +12,7 @@ public class ComptePayant extends Compte {
 
     public void retirer(float montant) throws InferieurAZeroException, SoldeInsuffisantException {
         if(montant <0 ){
-
+            throw new InferieurAZeroException();
         }
         montant += montant * tauxPaiement;
         this.solde -= montant;
@@ -24,7 +24,7 @@ public class ComptePayant extends Compte {
 
     @Override
     public String toString(){
-        return String.format("ComptePayant[code:%d, solde:%f, tauxPaiement:%f]", this.code ,this.solde, this.tauxPaiement);
+        return String.format("ComptePayant[code:%d, solde:%.2f, tauxPaiement:%.2f]", this.getCode() ,this.solde, this.tauxPaiement);
     }
 
 }

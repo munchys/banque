@@ -6,7 +6,7 @@ import exception.InferieurAZeroException;
 public abstract class Compte {
 //    private static List<Compte> listeCompte;
     private static int nbComptes = 0;
-    protected int code;
+    private int code;
     protected float solde;
 
     Compte(float solde){
@@ -14,7 +14,6 @@ public abstract class Compte {
         this.code = Compte.nbComptes;
 //        Compte.listeCompte.add(this);
         this.solde = solde;
-
     }
     protected void verser(float montant) throws InferieurAZeroException{
         if(montant < 0){
@@ -36,11 +35,9 @@ public abstract class Compte {
         return code;
     }
 
-
-
     @Override
     public String toString(){
-        return String.format("Compte[id:%d,solde:%.2f]", this.code, this.solde);
+        return String.format("Compte[code:%d,solde:%.2f]", this.getCode(), this.solde);
     }
 
 }

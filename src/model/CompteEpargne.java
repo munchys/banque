@@ -22,7 +22,7 @@ public class CompteEpargne extends Compte{
 
     @Override
     public String toString(){
-        return String.format("CompteEpargne[code:%d, solde:%f, tauxInteret:%f]",this.code ,this.solde, tauxInteret);
+        return String.format("CompteEpargne[code:%d, solde:%.2f, tauxInteret:%.2f]",this.getCode() ,this.solde, tauxInteret);
     }
 
 }
