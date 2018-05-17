@@ -4,7 +4,7 @@ public class InferieurAZeroException extends Exception{
 
     @Override
     public String getMessage(){
-        StringBuilder sb = new StringBuilder("un montant inférieur à 0 à été passé");
+        StringBuilder sb = new StringBuilder("Vous devez passer un ontant supérieur à 0");
         return sb.toString();
     }
 }
