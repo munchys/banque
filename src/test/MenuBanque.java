@@ -243,7 +243,7 @@ public class MenuBanque {
         System.out.format("il y a %d comptes :\n", Compte.getNbComptes());
         System.out.println("-------------");
         for(Compte compte : this.listCompte){
-            System.out.println(compte);
+            System.out.println(compte.getCode() +" - "+ compte);
             System.out.println("-------------");
         }
     }
